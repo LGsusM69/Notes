@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes App</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+    <script src="/javascripts/sidebar.js" defer></script>
+
+  </head>
 <body>
     <div class="sidebar">
-        <div class="sidebar-header">Notes<button type="button">create new</button></div>
+        <div class="sidebar-header">Notes
+          <button id="create-new">
+            <img src="/images/icons/createnew.jpg" alt="Create New Icon" width="20" height="20">
+          </button>
+        </div>
         <div class="note-list">
             <div class="note-item">
-                <div class="note-title">Sample Note Title</div>
+              <div class="note-title" contenteditable="true" oninput="syncTitle('sidebar')">Sample Note Title</div>
                 <div class="note-preview">This is a preview of the note content...</div>
                 <div class="note-date">Dec 12, 2024</div>
             </div>
@@ -19,7 +25,16 @@
         </div>
     </div>
     <div class="editor">
-        <div class="editor-header">Edit Note</div>
+        <div class="editor-header">
+          <div
+            class="editor-title"
+            contenteditable="true"
+            oninput="syncTitle('editor')"
+            spellcheck="false"
+          >
+          Sample Note Title
+        </div>
+      </div>
         <div class="editor-content">
             <textarea placeholder="Start writing your note here..."></textarea>
         </div>
